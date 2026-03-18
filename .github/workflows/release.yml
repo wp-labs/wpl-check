@@ -43,7 +43,7 @@ jobs:
       - name: Cargo build
         env:
           MACOSX_DEPLOYMENT_TARGET: ${{ runner.os == 'macOS' && '11.0' || '' }}
-        run: cargo build --locked --release --target ${{ matrix.target }}
+        run: cargo build --release --target ${{ matrix.target }}
 
       - name: Smoke test binary
         run: ./target/${{ matrix.target }}/release/wpl-check help >/dev/null
