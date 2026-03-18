@@ -1,0 +1,10 @@
+extern mod cfm { git = "https://github.com/galaxy-operators/cfm-gxl.git", branch = "${GXL_CHANNEL:develop}" }
+mod  envs {
+  env default {
+  }
+}
+mod main  : lib_ver_adm {
+  #[auto_load(exit)]
+  flow _set_ver : ver.set_cargo_ver {
+  }
+}

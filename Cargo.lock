@@ -2175,6 +2175,8 @@ dependencies = [
 [[package]]
 name = "wp-lang"
 version = "0.1.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f1b32c823cd2c7843499250400468f1e7364d0a18b2f2314fb8a2056ae674667"
 dependencies = [
  "ahash",
  "anyhow",
@@ -2314,7 +2316,7 @@ dependencies = [
 
 [[package]]
 name = "wpl-check"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
  "wp-lang",
 ]
