@@ -48,26 +48,23 @@ jobs:
       - name: Smoke test binary
         run: ./target/${{ matrix.target }}/release/wpl-check help >/dev/null
 
-      - name: Package artifacts
+      - name: Prepare artifact
         run: |
           set -euo pipefail
-          ARTIFACT_BASE="${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}"
-          mkdir -p "dist/${ARTIFACT_BASE}"
-          cp -av target/${{ matrix.target }}/release/wpl-check "dist/${ARTIFACT_BASE}/"
-          cp -av README.md LICENSE "dist/${ARTIFACT_BASE}/"
-          tar -C dist -czf "${ARTIFACT_BASE}.tar.gz" "${ARTIFACT_BASE}"
+          ARTIFACT_PATH="${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}"
+          cp -av target/${{ matrix.target }}/release/wpl-check "${ARTIFACT_PATH}"
 
       - name: Attest build provenance
         uses: actions/attest-build-provenance@v3
         continue-on-error: true
         with:
-          subject-path: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}.tar.gz
+          subject-path: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}
 
-      - name: Upload packaged artifact
+      - name: Upload binary artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}
-          path: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}.tar.gz
+          path: ${{ github.event.repository.name }}-${{ github.ref_name }}-${{ matrix.target }}
           if-no-files-found: error
           retention-days: 7
 
@@ -90,7 +87,7 @@ jobs:
         with:
           generate_release_notes: true
           prerelease: ${{ contains(github.ref_name, '-dryrun') }}
-          files: artifacts/*.tar.gz
+          files: artifacts/*
           fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -5,6 +5,8 @@ mod  envs {
 }
 mod main  : lib_ver_adm {
   #[auto_load(exit)]
-  flow _set_ver : ver.set_cargo_ver {
+  flow  ver.set_cargo_ver | @_set_ver {
+    gx.cmd("cargo check");
+
   }
 }
