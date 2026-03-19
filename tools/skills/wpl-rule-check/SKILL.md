@@ -20,6 +20,13 @@ It resolves `wpl-check` in this order:
 4. `WPL_CHECK_MANIFEST_PATH` if pointed at a `wpl-check` `Cargo.toml`
 
 If none of these work, stop and tell the user how to install `wpl-check`.
+Preferred install command:
+
+```bash
+curl -sSf https://get.warpparse.ai/inst-x.sh | bash -s -- wpl-check
+```
+
+Prefer the installed binary path. Only fall back to `cargo run` when maintaining this repository locally.
 
 If the task is about how to write WPL, read:
 

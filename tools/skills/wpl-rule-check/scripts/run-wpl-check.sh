@@ -50,7 +50,7 @@ wpl-check is not available.
 Use one of the following:
   1. Set WPL_CHECK_BIN to an installed wpl-check executable
   2. Install the binary:
-       cargo install --path /path/to/wpl-check
+       curl -sSf https://get.warpparse.ai/inst-x.sh | bash -s -- wpl-check
   3. Set WPL_CHECK_MANIFEST_PATH to a local wpl-check Cargo.toml and rerun
 EOF
 exit 1

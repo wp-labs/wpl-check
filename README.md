@@ -20,28 +20,40 @@ The repository bundles:
 ## Install
 
 ```bash
-cargo install wpl-check
+curl -sSf https://get.warpparse.ai/inst-x.sh | bash -s -- wpl-check
 ```
+
+This installs the latest `wpl-check` binary without requiring a local Rust toolchain.
 
 ## Usage
 
 From the `wpl-check` repository root:
 
 ```bash
+wpl-check syntax examples/wpl-check/csv_demo/rule.wpl
+wpl-check sample --rule examples/wpl-check/csv_demo/rule.wpl examples/wpl-check/csv_demo/sample.txt
+```
+
+## Development From Source
+
+Only use this path when you are developing `wpl-check` itself. Regular users should prefer the install script above.
+
+When developing this repository from source:
+
+```bash
 cargo run -- syntax examples/wpl-check/csv_demo/rule.wpl
 cargo run -- sample --rule examples/wpl-check/csv_demo/rule.wpl examples/wpl-check/csv_demo/sample.txt
 ```
 
-## In-Repo Development
+## Install the Skill
 
-When developing this directory inside the `wp-lang` checkout root:
+Install directly from GitHub without cloning the repository:
 
 ```bash
-cargo run --manifest-path wpl-check/Cargo.toml -- syntax wpl-check/examples/wpl-check/csv_demo/rule.wpl
-cargo run --manifest-path wpl-check/Cargo.toml -- sample --rule wpl-check/examples/wpl-check/csv_demo/rule.wpl wpl-check/examples/wpl-check/csv_demo/sample.txt
+bash <(curl -fsSL https://raw.githubusercontent.com/wp-labs/wpl-check/main/scripts/install-codex-skill.sh) wpl-rule-check
 ```
 
-## Install the Skill
+Set `WPL_CHECK_REF=<branch-or-tag>` first if you want a specific published revision instead of `main`.
 
 From the `wpl-check` repository root:
 
@@ -49,14 +61,8 @@ From the `wpl-check` repository root:
 bash scripts/install-codex-skill.sh wpl-rule-check
 ```
 
-When developing this directory inside the `wp-lang` checkout root:
+## Notes
 
-```bash
-bash wpl-check/scripts/install-codex-skill.sh wpl-rule-check
-```
-
-## Local Dependency Override
-
-- `Cargo.toml` depends on published `wp-lang = "0.1.4"`.
-- A local `[patch.crates-io]` keeps in-repo development pointed at the sibling `../` checkout.
-- The bundled skill is designed to prefer an installed `wpl-check`, and otherwise fall back to a local checkout of this repository.
+- The bundled skill is designed to prefer an installed `wpl-check`, and otherwise fall back to a local source checkout for repository maintainers.
+- Building from source requires Rust. Installing through `https://get.warpparse.ai/inst-x.sh` does not.
+- Installing the skill through the GitHub script requires `bash`, `curl`, and `tar`, but does not require Rust.
