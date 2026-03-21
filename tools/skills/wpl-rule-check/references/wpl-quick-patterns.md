@@ -153,12 +153,30 @@ one_of(ip, chars)
 (ip:client_ip, opt(chars:tag"))
 ```
 
-## Package Selection
+## Validation Commands
 
-If a package has multiple rules, validate with:
+Syntax check (auto-detect mode):
+
+```bash
+wpl-check syntax path/to/rule.wpl
+```
+
+Sample parsing with default files (`rule.wpl`, `sample.txt`):
+
+```bash
+wpl-check sample ./demo_dir
+```
+
+Package with rule selection:
 
 ```bash
 wpl-check sample --package --rule-name rule_name path/to/rule.wpl path/to/sample.txt
+```
+
+Quick inline sample:
+
+```bash
+wpl-check sample --data '42,alice,' path/to/rule.wpl
 ```
 
 ## Validation Order

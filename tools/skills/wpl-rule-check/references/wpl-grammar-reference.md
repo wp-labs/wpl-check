@@ -264,6 +264,12 @@ When a package contains multiple rules, use explicit selection:
 wpl-check sample --package --rule-name rule_name rule.wpl sample.txt
 ```
 
+For quick checks with inline data:
+
+```bash
+wpl-check sample --data '{"key":"value"}' rule.wpl
+```
+
 ## 12. Common Invalid Forms
 
 Avoid these:

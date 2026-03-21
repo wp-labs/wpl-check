@@ -89,6 +89,10 @@ scripts/import-wp-rule-example.sh /path/to/wp-rule/models/wpl/example_name /tmp/
 Syntax only:
 
 ```bash
+# Auto-detect mode (default)
+scripts/run-wpl-check.sh syntax path/to/rule.wpl
+
+# Explicit mode when needed
 scripts/run-wpl-check.sh syntax --rule path/to/rule.wpl
 scripts/run-wpl-check.sh syntax --package path/to/rule.wpl
 scripts/run-wpl-check.sh syntax --expr path/to/rule.wpl
@@ -97,21 +101,21 @@ scripts/run-wpl-check.sh syntax --expr path/to/rule.wpl
 Parse one sample:
 
 ```bash
-scripts/run-wpl-check.sh sample --rule path/to/rule.wpl path/to/sample.txt
+# Auto-detect mode with default files (rule.wpl, sample.txt)
+scripts/run-wpl-check.sh sample ./demo_dir
+
+# Explicit mode for packages
 scripts/run-wpl-check.sh sample --package --rule-name rule_name path/to/rule.wpl path/to/sample.txt
+
+# Quick inline sample (no file needed)
+scripts/run-wpl-check.sh sample --data '42,alice,' path/to/rule.wpl
 ```
 
-Directory shorthand with defaults:
+Print normalized WPL for debugging:
 
 ```bash
-scripts/run-wpl-check.sh syntax ./csv_demo
-scripts/run-wpl-check.sh sample --rule ./csv_demo
-```
-
-Quick inline sample only when the user does not want a file:
-
-```bash
-scripts/run-wpl-check.sh sample --rule --data '42,alice,' path/to/rule.wpl
+scripts/run-wpl-check.sh syntax --print path/to/rule.wpl
+scripts/run-wpl-check.sh sample --print path/to/rule.wpl path/to/sample.txt
 ```
 
 ## Reading Failures
