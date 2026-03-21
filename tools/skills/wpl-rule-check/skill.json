@@ -1,0 +1,58 @@
+{
+  "name": "wpl-rule-check",
+  "version": "1.0.0",
+  "display_name": "WPL Rule Check",
+  "description": "Draft, revise, and validate WPL parsing rules with wpl-check",
+  "author": "wp-labs",
+  "license": "MIT",
+  "platforms": [
+    "codex",
+    "claude-code"
+  ],
+  "categories": [
+    "log-parsing",
+    "wpl",
+    "validation"
+  ],
+  "triggers": {
+    "keywords": [
+      "WPL",
+      "rule.wpl",
+      "parse.wpl",
+      "wpl-check",
+      "日志解析规则"
+    ],
+    "patterns": [
+      "解析.*样本",
+      "写.*WPL",
+      "WPL.*语法",
+      "验证.*规则"
+    ]
+  },
+  "dependencies": {
+    "required": [
+      {
+        "name": "wpl-check",
+        "description": "WPL validation CLI tool",
+        "url": "https://github.com/wp-labs/wpl-check",
+        "install": "curl -sSf https://get.warpparse.ai/inst-x.sh | bash -s -- wpl-check"
+      }
+    ]
+  },
+  "resources": {
+    "github": "https://github.com/wp-labs/wpl-check",
+    "docs": "https://docs.warpparse.ai"
+  },
+  "files": {
+    "skill": "SKILL.md",
+    "agents": {
+      "openai": "agents/openai.yaml"
+    },
+    "references": [
+      "references/how-to-write-wpl.md",
+      "references/wpl-grammar-reference.md",
+      "references/wpl-quick-patterns.md",
+      "references/wpl-examples.md"
+    ]
+  }
+}
