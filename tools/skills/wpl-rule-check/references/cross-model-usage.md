@@ -1,6 +1,6 @@
 # Cross-Model Usage
 
-Use this file when you want to run the `wpl-rule-check` workflow outside Codex.
+Use this file when you want to run the `wpl-rule-check` workflow outside the default Codex/OpenAI setup.
 
 This skill can be reused by other AI systems as long as they can:
 
@@ -21,15 +21,22 @@ These files are model-neutral:
 
 This file explains how to use them in other agent systems.
 
-## What Is Codex-Specific
+## What Is Host-Specific
 
-These parts are specific to Codex/OpenAI skill loading:
+These parts depend on the host agent you load the skill into:
 
 - `SKILL.md`
 - `agents/openai.yaml`
-- installation under `~/.codex/skills/`
+- `agents/anthropic.yaml`
+- `agents/gemini.yaml`
+- `agents/cursor.yaml`
+- `agents/cline.yaml`
+- `agents/continue.yaml`
+- `agents/generic.yaml`
+- installation via `install-skill.sh`
 
-Other platforms can ignore those files and use the portable references directly.
+For Codex/OpenAI, the default install target is `~/.codex/skills/`.
+Other hosts can either use their matching `agents/*.yaml` file or ignore `agents/` entirely and rely on the portable references directly.
 
 ## Minimal Host Requirements
 
@@ -111,6 +118,7 @@ wpl-check sample --rule path/to/case_dir
 
 ### Claude / Gemini / generic API agent
 
+- install with `bash install-skill.sh wpl-rule-check --agent anthropic` or `--agent gemini`
 - put `references/portable-system-prompt.md` into the system prompt
 - attach one or more reference files as context
 - let the model edit `rule.wpl` and `sample.txt`
@@ -118,6 +126,7 @@ wpl-check sample --rule path/to/case_dir
 
 ### Cursor / Cline / Continue / editor agents
 
+- install with `bash install-skill.sh wpl-rule-check --agent cursor|cline|continue`
 - keep this skill directory in the workspace
 - point the agent to `references/portable-system-prompt.md`
 - let it open files under `examples/` when it needs templates
@@ -136,6 +145,7 @@ If you publish this skill for cross-model reuse:
 
 - keep the whole `wpl-rule-check/` directory together
 - do not publish only `SKILL.md`
+- keep `agents/*.yaml` together with the portable references
 - version by git tag such as `v0.1.0`
 - document that `wpl-check` must already be installed in `PATH`
 

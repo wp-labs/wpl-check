@@ -1,5 +1,7 @@
 # wpl-check
 
+[中文说明](./README.zh.md)
+
 `wpl-check` is the standalone CLI and agent-facing packaging for validating WPL source and running one sample payload through a rule, package, or expression.
 
 The repository bundles:
@@ -51,6 +53,7 @@ cargo run -- sample --package --rule-name nginx examples/wpl-check/library/wp-ru
 
 - `examples/wpl-check/core/` keeps small teaching examples that are easy to adapt.
 - `examples/wpl-check/library/wp-rule/` keeps curated real-world examples mirrored from `wp-rule`.
+- `examples/wpl-check/library/wp-rule/README.md` defines which upstream examples are worth mirroring and how to refresh them.
 
 Refresh the mirrored library examples from a local `wp-rule` checkout:
 
@@ -63,7 +66,7 @@ bash scripts/sync-wp-rule-examples.sh ../wp-rule
 Install directly from GitHub without cloning the repository:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/wp-labs/wpl-check/main/scripts/install-codex-skill.sh) wpl-rule-check
+bash <(curl -fsSL https://raw.githubusercontent.com/wp-labs/wpl-check/main/install-skill.sh) wpl-rule-check
 ```
 
 Set `WPL_CHECK_REF=<branch-or-tag>` first if you want a specific published revision instead of `main`.
@@ -71,11 +74,20 @@ Set `WPL_CHECK_REF=<branch-or-tag>` first if you want a specific published revis
 From the `wpl-check` repository root:
 
 ```bash
-bash scripts/install-codex-skill.sh wpl-rule-check
+bash install-skill.sh wpl-rule-check
+```
+
+Install for another agent host into a generic skill directory:
+
+```bash
+bash install-skill.sh wpl-rule-check --agent anthropic
+bash install-skill.sh wpl-rule-check --agent gemini --target-dir ./dist/skills/wpl-rule-check
+bash install-skill.sh wpl-rule-check --list-agents
 ```
 
 ## Notes
 
 - The bundled skill is designed to prefer an installed `wpl-check`, and otherwise fall back to a local source checkout for repository maintainers.
+- The skill bundle now includes host metadata under `tools/skills/wpl-rule-check/agents/` for `openai`, `anthropic`, `gemini`, `cursor`, `cline`, `continue`, and `generic`.
 - Building from source requires Rust. Installing through `https://get.warpparse.ai/inst-x.sh` does not.
 - Installing the skill through the GitHub script requires `bash`, `curl`, and `tar`, but does not require Rust.

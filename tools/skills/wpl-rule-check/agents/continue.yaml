@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Author and validate WPL parsing rules in Continue"
+  default_prompt: "Load the portable WPL references, edit rule.wpl and sample.txt incrementally, and only answer after wpl-check syntax and wpl-check sample have verified the result."

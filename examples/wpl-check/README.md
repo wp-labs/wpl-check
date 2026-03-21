@@ -7,6 +7,10 @@ Each example lives in its own directory so the WPL source and sample payload sta
 - `core/` contains small teaching examples for fast drafting and debugging.
 - `library/wp-rule/` contains curated examples mirrored from the `wp-rule` repository.
 
+Selection and refresh policy for mirrored examples:
+
+- `examples/wpl-check/library/wp-rule/README.md`
+
 Refresh the mirrored library set:
 
 ```bash

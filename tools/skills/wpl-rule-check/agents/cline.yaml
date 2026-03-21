@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Author and validate WPL parsing rules in Cline"
+  default_prompt: "Use the portable WPL authoring workflow, keep rule.wpl and sample.txt together, and validate every claimed fix by running wpl-check syntax and wpl-check sample."

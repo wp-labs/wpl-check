@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Draft and validate WPL parsing rules with Gemini-compatible workflows"
+  default_prompt: "Use the bundled portable WPL workflow to draft or fix a WPL rule, keep rule.wpl and sample.txt together, and verify the result with wpl-check syntax and wpl-check sample."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Draft and validate WPL parsing rules with Claude-compatible workflows"
+  default_prompt: "Use the bundled portable WPL workflow to draft or fix a WPL rule, keep rule.wpl and sample.txt together, and run wpl-check syntax and wpl-check sample before answering."

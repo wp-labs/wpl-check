@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Portable WPL authoring workflow for generic agent hosts"
+  default_prompt: "Use references/portable-system-prompt.md plus the WPL references and examples in this skill, then validate with wpl-check before claiming a rule works."

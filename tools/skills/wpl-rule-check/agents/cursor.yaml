@@ -1,0 +1,4 @@
+interface:
+  display_name: "WPL Rule Check"
+  short_description: "Author and validate WPL parsing rules in Cursor"
+  default_prompt: "Use the portable WPL authoring workflow, adapt existing examples before writing from scratch, and run wpl-check syntax and wpl-check sample from the workspace shell."
