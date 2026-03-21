@@ -52,6 +52,12 @@ README 中给出的快速开始流程是：
 - `wpl-check syntax`
 - `wpl-check sample`
 
+如果当前工作区就是 `wpl-check` 仓库，优先先看已经同步进仓库的镜像样例：
+
+- `examples/wpl-check/library/wp-rule/`
+
+这些目录已经做过命名映射，适合直接拿来跑 `wpl-check`。
+
 而 `wp-rule` 使用的是另一套约定：
 
 - `models/wpl/<日志类型>/parse.wpl`
@@ -125,7 +131,10 @@ scripts/import-wp-rule-example.sh /path/to/wp-rule/models/wpl/example_name /tmp/
 - 可能有仓库级校验流程
 
 如果用户要“学习写法”，可先看 skill 自带 examples。
-如果用户要“对齐真实规则库”，优先看 `wp-rule`。
+如果用户要“对齐真实规则库”，优先顺序应为：
+
+1. 先看 `examples/wpl-check/library/wp-rule/` 中的镜像样例
+2. 镜像里没有，再打开外部 `wp-rule`
 
 ## 集成建议
 
@@ -134,7 +143,8 @@ scripts/import-wp-rule-example.sh /path/to/wp-rule/models/wpl/example_name /tmp/
 1. 在 SKILL.md 中把 `wp-rule` 标成“外部真实示例库”
 2. 增加一段如何把 `parse.wpl` / `sample.dat` 映射到 `wpl-check` 的说明
 3. 已有 `scripts/import-wp-rule-example.sh` 可把 `wp-rule` 目录转换成 `rule.wpl` / `sample.txt` 的临时工作目录
-4. 若要离线稳定使用，再考虑把少量代表性例子镜像进本 skill 的 `examples/`
+4. `wpl-check` 仓库级 examples 可用 `scripts/sync-wp-rule-examples.sh` 维护一组精选镜像样例
+5. 若要离线稳定使用，再考虑把少量代表性例子镜像进本 skill 的 `examples/`
 
 ## 注意事项
 

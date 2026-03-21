@@ -14,7 +14,7 @@ The repository bundles:
 
 - `wpl-check syntax` for source-only validation
 - `wpl-check sample` for parsing one payload against WPL
-- bundled examples under `examples/wpl-check/`
+- bundled examples under `examples/wpl-check/core/` and `examples/wpl-check/library/wp-rule/`
 - the `wpl-rule-check` agent skill under `tools/skills/wpl-rule-check/`
 
 ## Install
@@ -30,8 +30,9 @@ This installs the latest `wpl-check` binary without requiring a local Rust toolc
 From the `wpl-check` repository root:
 
 ```bash
-wpl-check syntax examples/wpl-check/csv_demo/rule.wpl
-wpl-check sample --rule examples/wpl-check/csv_demo/rule.wpl examples/wpl-check/csv_demo/sample.txt
+wpl-check syntax examples/wpl-check/core/csv_demo/rule.wpl
+wpl-check sample --rule examples/wpl-check/core/csv_demo/rule.wpl examples/wpl-check/core/csv_demo/sample.txt
+wpl-check sample --package --rule-name nginx examples/wpl-check/library/wp-rule/raw/nginx
 ```
 
 ## Development From Source
@@ -41,8 +42,20 @@ Only use this path when you are developing `wpl-check` itself. Regular users sho
 When developing this repository from source:
 
 ```bash
-cargo run -- syntax examples/wpl-check/csv_demo/rule.wpl
-cargo run -- sample --rule examples/wpl-check/csv_demo/rule.wpl examples/wpl-check/csv_demo/sample.txt
+cargo run -- syntax examples/wpl-check/core/csv_demo/rule.wpl
+cargo run -- sample --rule examples/wpl-check/core/csv_demo/rule.wpl examples/wpl-check/core/csv_demo/sample.txt
+cargo run -- sample --package --rule-name nginx examples/wpl-check/library/wp-rule/fluent-bit/nginx
+```
+
+## Example Layout
+
+- `examples/wpl-check/core/` keeps small teaching examples that are easy to adapt.
+- `examples/wpl-check/library/wp-rule/` keeps curated real-world examples mirrored from `wp-rule`.
+
+Refresh the mirrored library examples from a local `wp-rule` checkout:
+
+```bash
+bash scripts/sync-wp-rule-examples.sh ../wp-rule
 ```
 
 ## Install the Skill
