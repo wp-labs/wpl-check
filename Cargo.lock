@@ -937,41 +937,18 @@ dependencies = [
 
 [[package]]
 name = "orion-error"
-version = "0.7.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fb80edb5308a8db52f47ec6f4b34a1c2b1066f15f8ac5c8ee42b5f2cfc4af3ea"
-dependencies = [
- "derive_more",
- "log",
- "orion-error-derive 0.7.2",
- "serde",
- "thiserror",
-]
-
-[[package]]
-name = "orion-error"
 version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6fb344e4055f4f9507d475314c22e085ee3e6cc68643d48e3657f76abf88d01"
 dependencies = [
+ "anyhow",
  "log",
- "orion-error-derive 0.8.1",
+ "orion-error-derive",
  "serde",
  "serde_json",
  "smol_str",
  "thiserror",
  "toml",
-]
-
-[[package]]
-name = "orion-error-derive"
-version = "0.7.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d5979f4f7aae9b0ebb0f4130660e5fb94be1fac2bc9dade32f3a6f24ea703cff"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -987,9 +964,9 @@ dependencies = [
 
 [[package]]
 name = "orion-sec"
-version = "0.5.0"
+version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e55c59c3c72d715a92029f3fec8139e6667a244408eb9a958476cdacec8d1c80"
+checksum = "cb5aec268fc9385600b5f7995fc01eb2cb421a8cc9c5788db9ebf9d0fc8bbf2e"
 dependencies = [
  "chrono",
  "contracts",
@@ -999,7 +976,7 @@ dependencies = [
  "indexmap",
  "log",
  "once_cell",
- "orion-error 0.7.2",
+ "orion-error",
  "orion-variate",
  "orion_conf",
  "serde",
@@ -1012,43 +989,36 @@ dependencies = [
 
 [[package]]
 name = "orion-variate"
-version = "0.12.0"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22f6f2196bb828c6ac65252e87d733a36377960d1c512282a4eea8f1a1c6b826"
+checksum = "03645f3e8e91eaf412d288f5806c4208ae9e98d0820f677973cb52aed5a6a1a5"
 dependencies = [
- "contracts",
  "derive-getters",
  "derive_more",
  "getset",
  "indexmap",
  "log",
- "orion-error 0.7.2",
+ "orion-error",
  "os_info",
  "serde",
  "serde_derive",
- "serde_ini",
- "serde_json",
- "serde_yaml",
- "thiserror",
- "toml",
  "winnow",
 ]
 
 [[package]]
 name = "orion_conf"
-version = "0.6.0"
+version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f33a50c04142ea6065269348eb2df6fb93c30e0848fa74631cae658df60c2ef7"
+checksum = "088ee58d7784c683ca4b73f0c2f1c2c32f884b8cd5fddb49644fe4f1667a7145"
 dependencies = [
  "derive-getters",
  "derive_more",
  "log",
- "orion-error 0.7.2",
+ "orion-error",
  "orion-variate",
  "serde",
  "serde_derive",
  "serde_yaml",
- "thiserror",
  "toml",
 ]
 
@@ -1280,12 +1250,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc897dd8d9e8bd1ed8cdad82b5966c3e0ecae09fb1907d58efaa013543185d0a"
 
 [[package]]
-name = "result"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "194d8e591e405d1eecf28819740abed6d719d1a2db87fc0bcdedee9a26d55560"
-
-[[package]]
 name = "rustc_version"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1367,17 +1331,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn",
-]
-
-[[package]]
-name = "serde_ini"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb236687e2bb073a7521c021949be944641e671b8505a94069ca37b656c81139"
-dependencies = [
- "result",
- "serde",
- "void",
 ]
 
 [[package]]
@@ -1642,12 +1595,6 @@ name = "version_check"
 version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
-
-[[package]]
-name = "void"
-version = "1.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6a02e4885ed3bc0f2de90ea6dd45ebcbb66dacffe03547fadbb0eeae2770887d"
 
 [[package]]
 name = "wasip2"
@@ -1941,16 +1888,14 @@ dependencies = [
 
 [[package]]
 name = "wp-connector-api"
-version = "0.9.0"
+version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d4100180cc9d3af7f2a1ca55a659f0a80887d202bdbf4e8b39b3ad5e8d831884"
+checksum = "7679ff66d428626c693b1f58d644215b421506e1a8610250a862335e25596bf9"
 dependencies = [
- "anyhow",
  "async-broadcast",
  "async-trait",
  "derive_more",
- "once_cell",
- "orion-error 0.7.2",
+ "orion-error",
  "serde",
  "serde_derive",
  "serde_json",
@@ -1975,12 +1920,12 @@ dependencies = [
 
 [[package]]
 name = "wp-error"
-version = "0.9.0"
+version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "19c068cfb9d0a741cc35a2220cf2f1f528beb87ad231abf8dfad51f328521d2a"
+checksum = "a09d058cbc360fc0b27e225ea7f01cc831c90173fa721eebcd0c661b7af023ff"
 dependencies = [
  "derive_more",
- "orion-error 0.7.2",
+ "orion-error",
  "orion-sec",
  "orion_conf",
  "serde",
@@ -1993,9 +1938,9 @@ dependencies = [
 
 [[package]]
 name = "wp-lang"
-version = "0.3.0"
+version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bccc1d5789449369edc6ee32ac77e1ddd99637b309971b4e579a2d72d100aa4e"
+checksum = "d32547926f11142ff5699fffbf25d9bf2609814f2ff07ecff8bc2d8b5413734e"
 dependencies = [
  "ahash",
  "base64",
@@ -2010,7 +1955,7 @@ dependencies = [
  "log",
  "mailchecker",
  "once_cell",
- "orion-error 0.8.1",
+ "orion-error",
  "phone",
  "rand 0.10.0",
  "regex",
@@ -2036,9 +1981,9 @@ dependencies = [
 
 [[package]]
 name = "wp-log"
-version = "0.3.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5d0079b116107506944cde01f86e5a52eb5f85eee7b89bf0651c7533141e0236"
+checksum = "28c6bc038604182c1cff7a9837ba48fbde0c7a5d2be64f1f29c97a85d8aa1897"
 dependencies = [
  "anyhow",
  "chrono",
@@ -2046,7 +1991,7 @@ dependencies = [
  "getset",
  "log",
  "log4rs",
- "orion-error 0.7.2",
+ "orion-error",
  "orion-variate",
  "orion_conf",
  "serde",
@@ -2083,7 +2028,7 @@ checksum = "b0f2b84c367dc690a0859402cdcb553338942cf4badb40028cbf76efb735131b"
 dependencies = [
  "bytes",
  "derive_more",
- "orion-error 0.8.1",
+ "orion-error",
  "serde",
  "serde_derive",
  "thiserror",
@@ -2101,9 +2046,9 @@ dependencies = [
 
 [[package]]
 name = "wp-specs"
-version = "0.9.0"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f349e7502371cc7e87b5d3e4ef9d28886fe52310d13a1d0ebd3b874858fc17e6"
+checksum = "4f18c33a4568a8400cca073df1e981214eded9cbe61b6b68fa5c331d9d8535c8"
 dependencies = [
  "serde",
  "wildmatch",
